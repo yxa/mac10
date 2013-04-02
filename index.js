@@ -1,5 +1,5 @@
 var skeleton  = require('./skeleton'),
-    build = require("./builder");
+    build     = require("./builder");
 
 module.exports.skeleton = skeleton;
-module.exports.builder= build;
+module.exports.builder  = build;

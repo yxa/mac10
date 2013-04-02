@@ -3,8 +3,10 @@ var assert    = require("assert"),
     fs        = require("fs-extra"),
     async     = require('async'),
     resolver  = require('../resolver'),
-    skeleton  = require('../skeleton'),
-    builder   = require('../builder');
+    index     = require('../index');
+
+var skeleton = index.skeleton;
+var builder = index.builder;
 
 var expect = chai.expect;
 

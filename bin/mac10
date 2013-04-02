@@ -1,0 +1,37 @@
+#!/usr/bin/env node
+
+var program   = require('commander'),
+    fs        = require('fs'),
+    build     = require('../builder'),
+    skeleton  = require('../skeleton'),
+    version   = require('../package.json').version;
+
+program.version(version);
+  
+  program
+   .command('build <path>')
+   .description('build the given site')
+   .action(function(path) {
+      skeleton(path, "skeleton", function(error){
+        if(!error) {
+          console.log("Success: Generated Static Site!");
+        } else {
+          console.log("Error: could not create build target path!");
+        }
+      })
+    });
+
+ program
+   .command('generate <path>')
+   .description('generate site at path')
+   .action(function(path){
+      build(path, function(error){
+        if(!error) {
+          console.log("Success: Generated Static Site!");
+        } else {          
+          throw error;
+        }
+      });
+   });
+
+program.parse(process.argv);
